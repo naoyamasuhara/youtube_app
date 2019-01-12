@@ -1,0 +1,24 @@
+<h1>動画作成</h1>
+
+<%= form_for :video, url: videos_path do |f| %>
+  <p>
+    <%= f.label :タイトル %><br>
+    <%= f.text_field :title, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.label :コメント %><br>
+    <%= f.text_area :content, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%=f.label :動画のURL %><br>
+    <%= f.text_field :youtube_uuid, class: 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.submit :作成する %>
+  </p>
+<% end %>
+
+<%= link_to '一覧へ', videos_path %>
