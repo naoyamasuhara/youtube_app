@@ -1,0 +1,24 @@
+<% if flash[:danger] %>
+  <div class="alert alert-danger">
+    <%= flash[:danger] %>
+  </div>
+<% end %>
+
+<h3>動画一覧</h3>
+
+<%= link_to '動画を投稿する', new_video_path, class: "btn btn-primary" %>
+
+<table class="table">
+  <tr>
+    <th>タイトル</th>
+    <th>投稿日時</th>
+    <th colspan= "2"></th>
+  </tr>
+
+  <% @videos.each do |video| %>
+    <tr>
+      <td><%=link_to video.title, video_path(video) %></td>
+      <td><%= video.created_at.strftime('%Y-%m-%d %X') %></td>
+    </tr>
+  <% end %>
+</table>
