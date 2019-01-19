@@ -1,0 +1,20 @@
+<%= form_for @video do |f| %>
+  <p class="container">
+    <%= f.label :動画タイトル %><br>
+    <%= f.text_field :title, class: 'form-control' %>
+  </p>
+
+  <p class="container">
+      <%= f.label :動画説明文 %><br>
+      <%= f.text_area :content, class: 'form-control' %>
+  </p>
+
+  <p class="container">
+    <%=f.label :動画のURL %><br>
+    <%= f.text_field :url, class: 'form-control' %>
+  </p>
+
+  <p class="text-center">
+    <%= f.submit :投稿する, class:"btn btn-success" %>
+  </p>
+<% end %>

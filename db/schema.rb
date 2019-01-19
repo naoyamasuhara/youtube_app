@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20181227020920) do
     t.string "title", null: false
     t.text "content"
     t.string "youtube_uuid"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

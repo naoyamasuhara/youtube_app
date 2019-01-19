@@ -1,22 +1,23 @@
 class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :set_video, only: [:show]
+  before_action :set_editable_video, only: [:edit, :update, :destroy]
 
   def index
-    @videos = Video.all
+    @videos = Video.order(id: :desc)
   end
 
   def show
   end
 
   def new
-    @video = Video.new
+    @video = current_user.videos.build
   end
 
   def edit
   end
 
   def create
-    @video = Video.new(video_params)
+    @video = current_user.videos.build(video_params)
     if @video.save
       flash[:success] = "「#{@video.title}」を登録しました。"
       redirect_to videos_path
@@ -43,11 +44,16 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title,:content,:youtube_uuid)
+    params.require(:video).permit(:title,:content,:url)
   end
 
   def set_video
     @video = Video.find(params[:id])
   end
-    
+  
+  def set_editable_video
+    @video = current_user.videos.find(params[:id])
+    @video.url = 'https://www.youtube.com/watch?v=' + @video.youtube_uuid
+  end
+
 end
