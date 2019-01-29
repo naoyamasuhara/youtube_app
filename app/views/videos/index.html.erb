@@ -1,24 +1,22 @@
-<% if flash[:danger] %>
-  <div class="alert alert-danger">
-    <%= flash[:danger] %>
-  </div>
-<% end %>
+<div class="container">
+  <% if flash[:danger] %>
+    <div class="alert alert-danger">
+      <%= flash[:danger] %>
+    </div>
+  <% end %>
 
-<h3>動画一覧</h3>
-
-<%= link_to '動画を投稿する', new_video_path, class: "btn btn-primary" %>
-
-<table class="table">
-  <tr>
-    <th>タイトル</th>
-    <th>投稿日時</th>
-    <th colspan= "2"></th>
-  </tr>
+  <h2>動画一覧</h2>
 
   <% @videos.each do |video| %>
-    <tr>
-      <td><%=link_to video.title, video_path(video) %></td>
-      <td><%= video.created_at.strftime('%Y-%m-%d %X') %></td>
-    </tr>
+    <div class="index-content">
+      <div class="col-lg-3">
+        <div class="card">
+          <iframe class="iframe" src="http://www.youtube.com/embed/<%= video.youtube_uuid %>"></iframe>
+          <h2><%= truncate(video.title, length: 8) %></h2>
+          <p><%= truncate(video.content, length: 15) %></p>
+          <div class="a"><%= link_to '詳細',video_path(video), class:"btn btn-primary" %></div>
+        </div>
+      </div>
+    </div>
   <% end %>
-</table>
+</div>

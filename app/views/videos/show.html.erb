@@ -1,17 +1,12 @@
-<% if flash[:success] %>
-  <div class="alert alert-success">
-    <%= flash[:success] %>
-  </div>
-<% end %>
-
-<div class="pull-right"><%= link_to "一覧へ", videos_path %></div>
-
-<%= link_to '編集',edit_video_path(@video), class:"btn btn-primary" %>　 <%= link_to '削除',video_path(@video), method: :delete, data: { confirm: '本当に削除しますか？' },class:"btn btn-danger" %>
-
-<h2 class="container"><%= @video.title %></h2>
-
-<h4 class="container"><%= @video.content %></h4>
-
 <div class="container">
-  <iframe src="http://www.youtube.com/embed/<%= @video.youtube_uuid %>" width="800" height="500">
+  <% if flash[:success] %>
+    <div class="alert alert-success">
+      <%= flash[:success] %>
+    </div>
+  <% end %>
+  <iframe class="video" src="http://www.youtube.com/embed/<%= @video.youtube_uuid %>"></iframe>
+  
+  <h2 class="content"><%= @video.title %></h2>
+  <h5 class="content"><%= @video.content %></h5>
+  <div align= "right"><%= link_to '編集',edit_video_path(@video), class:"btn btn-primary" %>　 <%= link_to '削除',video_path(@video), method: :delete, data: { confirm: '本当に削除しますか？' },class:"btn btn-danger" %></div>
 </div>

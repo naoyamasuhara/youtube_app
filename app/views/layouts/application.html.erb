@@ -8,15 +8,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <header>
-    <h1>videos share</h1>
-      <div class="header">
-        <% if user_signed_in? %>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to '新規登録', new_user_registration_path %>
-          <%= link_to 'ログイン',new_user_session_path %>
-        <% end %>
+    <div class="container">
+      <div class="header-inner">
+        <h2 class="header-logo">videos share</h2>
+        <div class="header-list">
+          <%= link_to "TOP", videos_path, class: "btn btn-info" %>　
+          <%= link_to '動画を投稿する', new_video_path, class: "btn btn-primary" %>　
+          <% if user_signed_in? %>
+             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-warning" %>
+          <% else %>
+            <%= link_to '新規登録', new_user_registration_path, class: "btn btn-warning" %>　
+            <%= link_to 'ログイン',new_user_session_path, class: "btn btn-success" %>
+          <% end %>
+        </div>
       </div>
+    </div>
   </header>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>

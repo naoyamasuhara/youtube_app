@@ -1,0 +1,18 @@
+header {
+  background-color: lightcyan;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  padding: 15px 0px;
+  justify-content: space-between;
+}
+
+.header-logo {
+  margin-top: 10px;
+}
+
+.header-list {
+  display: inline;
+}
