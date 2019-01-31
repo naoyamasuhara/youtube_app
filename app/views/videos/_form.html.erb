@@ -1,20 +1,15 @@
+<% @video.errors.full_messages.each do |message| %>
+  <%= message %>
+<% end %>
 <%= form_for @video do |f| %>
-  <p class="container">
-    <%= f.label :動画タイトル %><br>
-    <%= f.text_field :title, class: 'form-control' %>
-  </p>
+  <%= f.label :動画タイトル %><br>
+  <%= f.text_field :title, class: 'form-control video_form_input' %>
 
-  <p class="container">
-      <%= f.label :動画説明文 %><br>
-      <%= f.text_area :content, class: 'form-control' %>
-  </p>
+  <%=f.label :動画のURL %><br>
+  <%= f.text_field :url, class: 'form-control video_form_input' %>
 
-  <p class="container">
-    <%=f.label :動画のURL %><br>
-    <%= f.text_field :url, class: 'form-control' %>
-  </p>
+  <%= f.label :動画説明文 %><br>
+  <%= f.text_area :content, class: 'form-control video_form_input' %>
 
-  <p class="text-center">
-    <%= f.submit :投稿する, class:"btn btn-success" %>
-  </p>
+  <div align= "right"><%= f.submit :投稿する, class:"btn btn-success" %></div>
 <% end %>
